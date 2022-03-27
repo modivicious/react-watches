@@ -1,0 +1,41 @@
+.header {
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  li:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.icon {
+  display: block;
+  padding: 10px;
+}
+
+.cart {
+  position: relative;
+  &::before {
+    content: attr(data-qty);
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+  }
+}

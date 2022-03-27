@@ -6,6 +6,7 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  font-family: "Centery Gothic", sans-serif;
 }
 
 .main {
@@ -23,4 +24,10 @@ body {
 
 .hide-overflow {
   overflow: hidden;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 25px;
 }
