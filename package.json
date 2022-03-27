@@ -1,0 +1,21 @@
+{
+  "name": "start-parcel",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel app/*.html --open --port 3000",
+    "build": "parcel build app/*.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.4.0",
+    "@parcel/transformer-sass": "^2.4.0",
+    "@parcel/transformer-webmanifest": "^2.4.0",
+    "parcel": "^2.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.49.9"
+  }
+}
