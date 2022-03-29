@@ -4,4 +4,17 @@
 @import "libs";
 @import "global";
 
+.info {
+  padding-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 @import "media";
