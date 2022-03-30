@@ -7,6 +7,10 @@
   background-color: #f0f0f0;
   box-shadow: 0 30px 30px rgb(0 0 0 / 30%);
   display: none;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 .visible {
