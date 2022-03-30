@@ -5,10 +5,10 @@ import { AppContext } from "../../context";
 import * as styles from "./Minicart.module.scss";
 
 const Minicart = ({ opened, items, close }) => {
-  const { onRemove } = useContext(AppContext);
+  const { onRemoveFromCart } = useContext(AppContext);
 
   const onCross = (item) => {
-    onRemove(item.productId);
+    onRemoveFromCart(item.productId);
     items.length < 2 && close();
   };
 
@@ -27,7 +27,7 @@ const Minicart = ({ opened, items, close }) => {
               </a>
               <div className={styles.price}>{item.price} руб.</div>
               <button className={styles.remove} onClick={() => onCross(item)}>
-                <span className="visually-hidden">Удалить из корзины</span>
+                <span className="visuallyHidden">Удалить из корзины</span>
               </button>
             </li>
           );
@@ -38,7 +38,7 @@ const Minicart = ({ opened, items, close }) => {
         <span>{items.reduce((sum, item) => sum + item.price, 0)} руб.</span>
       </div>
       <div className={styles.checkout}>
-        <a className="link-btn" href="#">
+        <a className="linkBtn" href="#">
           Оформить заказ
         </a>
       </div>

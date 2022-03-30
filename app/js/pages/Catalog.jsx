@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../components/Card";
 
-const Catalog = ({ items, onAddToCart }) => {
+const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
+  const [sortType, setSortType] = useState("");
+
+  const handleChangeOption = (e) => {
+    setSortType(e.target.value);
+    sort(e.target.value);
+  };
+
   return (
     <div className="container">
       <div className="wrapper">
-        <h1 className="title main-title">Все часы</h1>
+        <h1 className="title mainTitle">Все часы</h1>
         <div className="info">
           <span className="quantity">{items.length} товаров</span>
-          <select className="select">
+          <select className="select" onChange={handleChangeOption}>
             <option style={{ display: "none" }} value>
               Сортировать по:
             </option>
@@ -18,7 +25,7 @@ const Catalog = ({ items, onAddToCart }) => {
             <option value="latest">Последние поступления</option>
           </select>
         </div>
-        <ul className="catalog">
+        <ul className="products">
           {items.map((item) => {
             return (
               <li key={item.productId}>
@@ -28,6 +35,7 @@ const Catalog = ({ items, onAddToCart }) => {
                   imgUrl={item.imgUrl}
                   productId={item.productId}
                   onAddToCart={onAddToCart}
+                  onAddToWish={onAddToWish}
                 />
               </li>
             );

@@ -42,9 +42,13 @@
 }
 
 .cart {
-  background-image: url("../../../images/icons/cart.svg");
+  background-image: url("../../../images/icons/cart-plus.svg");
 }
 
 .cartAdded {
   background-image: url("../../../images/icons/cart-filled.svg");
+}
+
+.wishAdded {
+  background-image: url("../../../images/icons/heart-filled.svg");
 }
