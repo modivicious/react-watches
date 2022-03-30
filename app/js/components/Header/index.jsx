@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Minicart from "../Minicart";
 
 import logo from "../../../images/logo.svg";
 import favoriteIcon from "../../../images/icons/heart.svg";
@@ -7,7 +9,13 @@ import userIcon from "../../../images/icons/user.svg";
 
 import * as styles from "./Header.module.scss";
 
-function Header() {
+const Header = ({ cartItems }) => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const onCartClick = () => {
+    cartItems.length && setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <header className={styles.header}>
       <div className="container">
@@ -25,10 +33,16 @@ function Header() {
               <button
                 className={`${styles.icon} ${styles.cart}`}
                 type="button"
-                data-qty="0"
+                data-qty={cartItems.length}
+                onClick={onCartClick}
               >
                 <img src={cartIcon} alt="Корзина" />
               </button>
+              <Minicart
+                opened={isCartOpen}
+                items={cartItems}
+                close={onCartClick}
+              />
             </li>
             <li>
               <a className={styles.icon} href="#">
@@ -40,6 +54,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

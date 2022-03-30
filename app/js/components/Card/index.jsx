@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { AppContext } from "../../context";
 
 import * as styles from "./Card.module.scss";
 
-const Card = ({ name, price, imgUrl }) => {
+const Card = ({ name, price, imgUrl, productId, onAddToCart }) => {
+  const { isItemInCart } = useContext(AppContext);
+
+  const onCart = () => {
+    onAddToCart({ name, price, imgUrl, productId });
+  };
+
   return (
     <div className={styles.card}>
       <a className={styles.imageLink} href="#">
@@ -18,7 +26,12 @@ const Card = ({ name, price, imgUrl }) => {
             <button className={styles.wish} type="button">
               <span className="visually-hidden">Добавить в желаемое</span>
             </button>
-            <button className={styles.cart} type="button">
+            <button
+              className={`${styles.cart}
+              ${isItemInCart(productId) ? styles.cartAdded : ""}`}
+              onClick={onCart}
+              type="button"
+            >
               <span className="visually-hidden">Добавить в корзину</span>
             </button>
           </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "../components/Card";
 
-const Catalog = ({ items }) => {
+const Catalog = ({ items, onAddToCart }) => {
   return (
     <div className="container">
       <div className="wrapper">
@@ -22,7 +22,13 @@ const Catalog = ({ items }) => {
           {items.map((item) => {
             return (
               <li key={item.productId}>
-                <Card {...item} />
+                <Card
+                  name={item.name}
+                  price={item.price}
+                  imgUrl={item.imgUrl}
+                  productId={item.productId}
+                  onAddToCart={onAddToCart}
+                />
               </li>
             );
           })}

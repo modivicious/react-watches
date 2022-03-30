@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useContext, createContext } from "react";
 
 import Header from "./components/Header";
 import Catalog from "./pages/Catalog";
+import { AppContext } from "./context";
 
 import images from "../images/content/*.webp";
 
@@ -51,11 +52,30 @@ const App = () => {
     },
   ];
 
+  const [cartItems, setCartItems] = useState([]);
+
+  const onAddToCart = (obj) => {
+    const findItem = cartItems.find((item) => item.productId === obj.productId);
+    if (findItem) {
+      onRemove(obj.productId);
+    } else {
+      setCartItems((prev) => [...prev, obj]);
+    }
+  };
+
+  const onRemove = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.productId !== id));
+  };
+
+  const isItemInCart = (id) => {
+    return cartItems.some((obj) => obj.productId === id);
+  };
+
   return (
-    <>
-      <Header />
-      <Catalog items={items} />
-    </>
+    <AppContext.Provider value={{ onRemove, isItemInCart }}>
+      <Header cartItems={cartItems} />
+      <Catalog items={items} onAddToCart={onAddToCart} />
+    </AppContext.Provider>
   );
 };
 
