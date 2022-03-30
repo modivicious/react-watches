@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Minicart from "../Minicart";
 
@@ -20,14 +21,14 @@ const Header = ({ cartItems }) => {
     <header className={styles.header}>
       <div className="container">
         <div className={styles.inner}>
-          <a className={styles.logo} href="#">
+          <Link className={styles.logo} to="/">
             <img src={logo} alt="Логотип" />
-          </a>
+          </Link>
           <ul className={styles.right}>
             <li>
-              <a className={styles.icon} href="#">
+              <Link className={styles.icon} to="wishlist">
                 <img src={favoriteIcon} alt="Избранное" />
-              </a>
+              </Link>
             </li>
             <li>
               <button

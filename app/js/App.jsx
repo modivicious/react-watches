@@ -1,7 +1,9 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Catalog from "./pages/Catalog";
+import WishList from "./pages/WishList";
 import { AppContext } from "./context";
 
 import images from "../images/content/*.webp";
@@ -74,7 +76,13 @@ const App = () => {
   return (
     <AppContext.Provider value={{ onRemove, isItemInCart }}>
       <Header cartItems={cartItems} />
-      <Catalog items={items} onAddToCart={onAddToCart} />
+      <Routes>
+        <Route
+          path="/"
+          element={<Catalog items={items} onAddToCart={onAddToCart} />}
+        />
+        <Route path="wishlist" element={<WishList />} />
+      </Routes>
     </AppContext.Provider>
   );
 };
