@@ -1,69 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 import Header from "./components/Header";
 import Catalog from "./pages/Catalog";
 import WishList from "./pages/WishList";
 import { AppContext } from "./context";
 
-import images from "../images/content/*.webp";
+import { API_URL } from "./apiUrl";
 
 const App = () => {
-  const items = [
-    {
-      productId: 1,
-      name: "Holzkern Bob",
-      price: 20990,
-      imgUrl: images[1],
-      receiptDate: "2022-03-26",
-    },
-    {
-      productId: 2,
-      name: "Holzkern Giuseppe",
-      price: 29990,
-      imgUrl: images[2],
-      receiptDate: "2022-03-26",
-    },
-    {
-      productId: 3,
-      name: "Holzkern Singapore",
-      price: 119900,
-      imgUrl: images[3],
-      receiptDate: "2022-03-26",
-    },
-    {
-      productId: 4,
-      name: "Holzkern Manhattan",
-      price: 49490,
-      imgUrl: images[4],
-      receiptDate: "2022-03-27",
-    },
-    {
-      productId: 5,
-      name: "Holzkern Amsterdam",
-      price: 21490,
-      imgUrl: images[5],
-      receiptDate: "2022-03-27",
-    },
-    {
-      productId: 6,
-      name: "Holzkern Canopy",
-      price: 20990,
-      imgUrl: images[6],
-      receiptDate: "2022-03-28",
-    },
-    {
-      productId: 7,
-      name: "Holzkern Summer Evening",
-      price: 22990,
-      imgUrl: images[7],
-      receiptDate: "2022-03-26",
-    },
-  ];
-
-  const [allItems, setAllItems] = useState([...items]);
+  const [allItems, setAllItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [wishItems, setWishItems] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        await axios
+          .get(`${API_URL}/products`)
+          .then((response) => setAllItems(response.data));
+      } catch (err) {
+        alert("Произошла ошибка при запросе данных.");
+        console.error(err);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   const onAddToCart = (obj) => {
     if (findItem(cartItems, obj)) {
