@@ -8,15 +8,12 @@ const Minicart = ({ opened, items, close }) => {
   const { onRemoveFromCart } = useContext(AppContext);
 
   const onCross = (item) => {
-    onRemoveFromCart(item.productId);
+    onRemoveFromCart(item);
     items.length < 2 && close();
   };
 
   return (
-    <div
-      className={`${styles.minicart} 
-      ${opened ? styles.visible : ""}`}
-    >
+    <div className={`${styles.minicart} ${opened ? styles.visible : ""}`}>
       <ul className={styles.products}>
         {items.map((item) => {
           return (

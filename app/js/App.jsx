@@ -17,9 +17,14 @@ const App = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        await axios
-          .get(`${API_URL}/products`)
-          .then((response) => setAllItems(response.data));
+        const [itemsRes, cartRes, wishRes] = await Promise.all([
+          axios.get(`${API_URL}/products`),
+          axios.get(`${API_URL}/cart`),
+          axios.get(`${API_URL}/wish`),
+        ]);
+        setAllItems(itemsRes.data);
+        setCartItems(cartRes.data);
+        setWishItems(wishRes.data);
       } catch (err) {
         alert("Произошла ошибка при запросе данных.");
         console.error(err);
@@ -29,19 +34,35 @@ const App = () => {
     fetchData();
   }, []);
 
-  const onAddToCart = (obj) => {
-    if (findItem(cartItems, obj)) {
-      onRemoveFromCart(obj.productId);
-    } else {
-      setCartItems((prev) => [...prev, obj]);
+  const onAddToCart = async (obj) => {
+    try {
+      const foundItem = findItem(cartItems, obj);
+      if (foundItem) {
+        await onRemoveFromCart(foundItem);
+      } else {
+        const { data } = await axios.post(`${API_URL}/cart`, obj);
+        obj.id = data.id;
+        setCartItems((prev) => [...prev, obj]);
+      }
+    } catch (err) {
+      alert("Произошла ошибка при добавлении в корзину.");
+      console.error(err);
     }
   };
 
-  const onAddToWish = (obj) => {
-    if (findItem(wishItems, obj)) {
-      onRemoveFromWish(obj.productId);
-    } else {
-      setWishItems((prev) => [...prev, obj]);
+  const onAddToWish = async (obj) => {
+    try {
+      const foundItem = findItem(wishItems, obj);
+      if (foundItem) {
+        await onRemoveFromWish(foundItem);
+      } else {
+        const { data } = await axios.post(`${API_URL}/wish`, obj);
+        obj.id = data.id;
+        setWishItems((prev) => [...prev, obj]);
+      }
+    } catch (err) {
+      alert("Произошла ошибка при добавлении в список желаний.");
+      console.error(err);
     }
   };
 
@@ -49,20 +70,26 @@ const App = () => {
     return array.find((item) => item.productId === obj.productId);
   };
 
-  const onRemoveFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.productId !== id));
+  const onRemoveFromCart = async (obj) => {
+    setCartItems((prev) =>
+      prev.filter((item) => item.productId !== obj.productId)
+    );
+    await axios.delete(`${API_URL}/cart/${obj.id}`);
   };
 
-  const onRemoveFromWish = (id) => {
-    setWishItems((prev) => prev.filter((item) => item.productId !== id));
+  const onRemoveFromWish = async (obj) => {
+    setWishItems((prev) =>
+      prev.filter((item) => item.productId !== obj.productId)
+    );
+    await axios.delete(`${API_URL}/wish/${obj.id}`);
   };
 
   const isItemInCart = (id) => {
-    return cartItems.some((obj) => obj.productId === id);
+    return cartItems.some((item) => item.productId === id);
   };
 
   const isItemInWish = (id) => {
-    return wishItems.some((obj) => obj.productId === id);
+    return wishItems.some((item) => item.productId === id);
   };
 
   const sortAllItems = (sortType) => {
@@ -79,6 +106,7 @@ const App = () => {
             (a, b) => Date.parse(b.receiptDate) - Date.parse(a.receiptDate)
           )
         );
+        break;
     }
   };
 

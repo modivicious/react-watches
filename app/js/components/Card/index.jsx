@@ -1,18 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { AppContext } from "../../context";
 
 import * as styles from "./Card.module.scss";
 
-const Card = ({ name, price, imgUrl, productId, onAddToCart, onAddToWish }) => {
+const Card = ({
+  name,
+  price,
+  imgUrl,
+  receiptDate,
+  id,
+  productId,
+  onAddToCart,
+  onAddToWish,
+}) => {
   const { isItemInCart, isItemInWish } = useContext(AppContext);
 
+  const obj = {
+    name,
+    price,
+    imgUrl,
+    receiptDate,
+    id,
+    productId,
+  };
+
   const onCart = () => {
-    onAddToCart({ name, price, imgUrl, productId });
+    onAddToCart(obj);
   };
 
   const onWish = () => {
-    onAddToWish({ name, price, imgUrl, productId });
+    onAddToWish(obj);
   };
 
   return (
@@ -28,16 +46,18 @@ const Card = ({ name, price, imgUrl, productId, onAddToCart, onAddToWish }) => {
           <span className={styles.price}>{price} руб.</span>
           <div className={styles.buttons}>
             <button
-              className={`${styles.wish}
-              ${isItemInWish(productId) ? styles.wishAdded : ""}`}
+              className={`${styles.wish} ${
+                isItemInWish(productId) ? styles.wishAdded : ""
+              }`}
               onClick={onWish}
               type="button"
             >
               <span className="visuallyHidden">Добавить в желаемое</span>
             </button>
             <button
-              className={`${styles.cart}
-              ${isItemInCart(productId) ? styles.cartAdded : ""}`}
+              className={`${styles.cart} ${
+                isItemInCart(productId) ? styles.cartAdded : ""
+              }`}
               onClick={onCart}
               type="button"
             >

@@ -14,11 +14,13 @@ const WishList = ({ items, onAddToCart, onAddToWish }) => {
           <ul className="products">
             {items.map((item) => {
               return (
-                <li key={item.productId}>
+                <li key={item.id}>
                   <Card
                     name={item.name}
                     price={item.price}
                     imgUrl={item.imgUrl}
+                    receiptDate={item.receiptDate}
+                    id={item.id}
                     productId={item.productId}
                     onAddToCart={onAddToCart}
                     onAddToWish={onAddToWish}
