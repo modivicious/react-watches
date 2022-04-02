@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Minicart from "../Minicart";
+import useClickOutside from "../../hooks/useClickOutside";
 
 import logo from "../../../images/logo.svg";
 import favoriteIcon from "../../../images/icons/heart.svg";
@@ -17,6 +18,10 @@ const Header = ({ cartItems }) => {
     cartItems.length && setIsCartOpen(!isCartOpen);
   };
 
+  const clickOutsideCart = useClickOutside(() => {
+    setIsCartOpen(false);
+  });
+
   return (
     <header className={styles.header}>
       <div className="container">
@@ -30,7 +35,7 @@ const Header = ({ cartItems }) => {
                 <img src={favoriteIcon} alt="Избранное" />
               </Link>
             </li>
-            <li>
+            <li ref={clickOutsideCart}>
               <button
                 className={`${styles.icon} ${styles.cart}`}
                 type="button"
