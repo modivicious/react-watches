@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 import Minicart from "../Minicart";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -44,11 +45,18 @@ const Header = ({ cartItems }) => {
               >
                 <img src={cartIcon} alt="Корзина" />
               </button>
-              <Minicart
-                opened={isCartOpen}
-                items={cartItems}
-                close={onCartClick}
-              />
+              <CSSTransition
+                in={isCartOpen}
+                timeout={300}
+                classNames="fade-in"
+                unmountOnExit
+              >
+                <Minicart
+                  opened={isCartOpen}
+                  items={cartItems}
+                  close={onCartClick}
+                />
+              </CSSTransition>
             </li>
             <li>
               <a className={styles.icon} href="#">

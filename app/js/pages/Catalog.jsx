@@ -30,7 +30,7 @@ const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
               >
-                <rect x="0" y="6" rx="3" ry="3" width="84" height="18" />
+                <rect x="0" y="8" rx="3" ry="3" width="84" height="18" />
               </ContentLoader>
             )}
           </span>

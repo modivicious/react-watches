@@ -79,10 +79,10 @@ const Card = ({
           foregroundColor="#ecebeb"
         >
           <rect x="0" y="0" rx="0" ry="0" width="288" height="288" />
-          <rect x="8" y="307" rx="3" ry="3" width="165" height="16" />
-          <rect x="8" y="348" rx="3" ry="3" width="95" height="16" />
-          <rect x="248" y="342" rx="3" ry="3" width="26" height="26" />
-          <rect x="208" y="342" rx="3" ry="3" width="26" height="26" />
+          <rect x="8" y="305" rx="3" ry="3" width="160" height="16" />
+          <rect x="8" y="345" rx="3" ry="3" width="85" height="16" />
+          <rect x="206" y="339" rx="3" ry="3" width="26" height="26" />
+          <rect x="246" y="339" rx="3" ry="3" width="26" height="26" />
         </ContentLoader>
       )}
     </li>

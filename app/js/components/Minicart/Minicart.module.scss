@@ -6,15 +6,10 @@
   font-size: 14px;
   background-color: #f8f8f8;
   box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
-  display: none;
 
   ::-webkit-scrollbar {
     width: 4px;
   }
-}
-
-.visible {
-  display: block;
 }
 
 .products {
