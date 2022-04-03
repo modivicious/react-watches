@@ -46,7 +46,7 @@ const Card = ({
           <span className={styles.price}>{price} руб.</span>
           <div className={styles.buttons}>
             <button
-              className={`${styles.wish} ${
+              className={`${styles.wish} ${styles.cardBtn} ${
                 isItemInWish(productId) ? styles.wishAdded : ""
               }`}
               onClick={onWish}
@@ -55,7 +55,7 @@ const Card = ({
               <span className="visuallyHidden">Добавить в желаемое</span>
             </button>
             <button
-              className={`${styles.cart} ${
+              className={`${styles.cart} ${styles.cardBtn} ${
                 isItemInCart(productId) ? styles.cartAdded : ""
               }`}
               onClick={onCart}
