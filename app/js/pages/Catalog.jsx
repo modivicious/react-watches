@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import ContentLoader from "react-content-loader";
 
 import Card from "../components/Card";
+import { AppContext } from "../context";
 
 const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
   const [sortType, setSortType] = useState("");
+
+  const { isLoaded } = useContext(AppContext);
 
   const handleChangeOption = (e) => {
     setSortType(e.target.value);
@@ -15,7 +19,21 @@ const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
       <div className="wrapper">
         <h1 className="title mainTitle">Все часы</h1>
         <div className="info">
-          <span className="quantity">{items.length} товаров</span>
+          <span className="quantity">
+            {isLoaded ? (
+              `${items.length} товаров`
+            ) : (
+              <ContentLoader
+                speed={2}
+                width={84}
+                height={22}
+                backgroundColor="#f3f3f3"
+                foregroundColor="#ecebeb"
+              >
+                <rect x="0" y="6" rx="3" ry="3" width="84" height="18" />
+              </ContentLoader>
+            )}
+          </span>
           <select className="select" onChange={handleChangeOption}>
             <option style={{ display: "none" }} value>
               Сортировать по:
@@ -26,20 +44,14 @@ const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
           </select>
         </div>
         <ul className="products">
-          {items.map((item) => {
+          {(isLoaded ? items : [...Array(8)]).map((item, index) => {
             return (
-              <li key={item.id}>
-                <Card
-                  name={item.name}
-                  price={item.price}
-                  imgUrl={item.imgUrl}
-                  receiptDate={item.receiptDate}
-                  id={item.id}
-                  productId={item.productId}
-                  onAddToCart={onAddToCart}
-                  onAddToWish={onAddToWish}
-                />
-              </li>
+              <Card
+                onAddToCart={onAddToCart}
+                onAddToWish={onAddToWish}
+                key={isLoaded ? item.id : index}
+                {...item}
+              />
             );
           })}
         </ul>

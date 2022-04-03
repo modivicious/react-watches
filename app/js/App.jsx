@@ -13,6 +13,7 @@ const App = () => {
   const [allItems, setAllItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [wishItems, setWishItems] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +26,7 @@ const App = () => {
         setAllItems(itemsRes.data);
         setCartItems(cartRes.data);
         setWishItems(wishRes.data);
+        setIsLoaded(true);
       } catch (err) {
         alert("Произошла ошибка при запросе данных.");
         console.error(err);
@@ -112,7 +114,7 @@ const App = () => {
 
   return (
     <AppContext.Provider
-      value={{ onRemoveFromCart, isItemInCart, isItemInWish }}
+      value={{ onRemoveFromCart, isItemInCart, isItemInWish, isLoaded }}
     >
       <Header cartItems={cartItems} />
       <Routes>
