@@ -42,9 +42,13 @@ const App = () => {
       if (foundItem) {
         await onRemoveFromCart(foundItem);
       } else {
-        const { data } = await axios.post(`${API_URL}/cart`, obj);
-        obj.id = data.id;
         setCartItems((prev) => [...prev, obj]);
+        const { data } = await axios.post(`${API_URL}/cart`, obj);
+        setCartItems((prev) =>
+          prev.map((item) =>
+            item.productId === data.productId ? { ...item, id: data.id } : item
+          )
+        );
       }
     } catch (err) {
       alert("Произошла ошибка при добавлении в корзину.");
@@ -58,9 +62,13 @@ const App = () => {
       if (foundItem) {
         await onRemoveFromWish(foundItem);
       } else {
-        const { data } = await axios.post(`${API_URL}/wish`, obj);
-        obj.id = data.id;
         setWishItems((prev) => [...prev, obj]);
+        const { data } = await axios.post(`${API_URL}/wish`, obj);
+        setWishItems((prev) =>
+          prev.map((item) =>
+            item.productId === data.productId ? { ...item, id: data.id } : item
+          )
+        );
       }
     } catch (err) {
       alert("Произошла ошибка при добавлении в список желаний.");
