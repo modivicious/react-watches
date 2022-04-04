@@ -6,9 +6,6 @@ import Minicart from "../Minicart";
 import useClickOutside from "../../hooks/useClickOutside";
 
 import logo from "../../../images/logo.svg";
-import favoriteIcon from "../../../images/icons/heart.svg";
-import cartIcon from "../../../images/icons/cart.svg";
-import userIcon from "../../../images/icons/user.svg";
 
 import * as styles from "./Header.module.scss";
 
@@ -31,19 +28,19 @@ const Header = ({ cartItems }) => {
             <img src={logo} alt="Логотип" />
           </Link>
           <ul className={styles.right}>
-            <li>
-              <Link className={styles.icon} to="wishlist">
-                <img src={favoriteIcon} alt="Избранное" />
+            <li className={styles.rightItem}>
+              <Link className={`${styles.icon} ${styles.wish}`} to="wishlist">
+                <span className="visuallyHidden">Избранное</span>
               </Link>
             </li>
-            <li ref={clickOutsideCart}>
+            <li className={styles.rightItem} ref={clickOutsideCart}>
               <button
                 className={`${styles.icon} ${styles.cart}`}
                 type="button"
                 data-qty={cartItems.length}
                 onClick={onCartClick}
               >
-                <img src={cartIcon} alt="Корзина" />
+                <span className="visuallyHidden">Корзина</span>
               </button>
               <CSSTransition
                 in={isCartOpen}
@@ -58,9 +55,9 @@ const Header = ({ cartItems }) => {
                 />
               </CSSTransition>
             </li>
-            <li>
-              <a className={styles.icon} href="#">
-                <img src={userIcon} alt="Личный кабинет" />
+            <li className={styles.rightItem}>
+              <a className={`${styles.icon} ${styles.user}`} href="#">
+                <span className="visuallyHidden">Личный кабинет</span>
               </a>
             </li>
           </ul>

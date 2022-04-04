@@ -13,7 +13,7 @@ const WishList = ({ items, onAddToCart, onAddToWish }) => {
   return (
     <div className="container">
       <div className="wrapper">
-        <h1 className="title mainTitle">Список желаний</h1>
+        <h1 className="title mainTitle">Список желаемого</h1>
 
         <CSSTransition
           in={isLoaded}
@@ -39,7 +39,7 @@ const WishList = ({ items, onAddToCart, onAddToWish }) => {
               ) : (
                 <div className={styles.noItems}>
                   <span className={styles.icon}></span>
-                  <h2 className={styles.title}>Ваш список желаний пуст.</h2>
+                  <h2 className={styles.title}>Ваш список желаемого пуст.</h2>
                   <p>Но мы надеемся, что вы найдете себе что-то по душе.</p>
                   <Link className="linkBtn" to="/">
                     В каталог

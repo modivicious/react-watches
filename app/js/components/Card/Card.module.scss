@@ -17,9 +17,13 @@
   padding: 16px 8px 8px 8px;
 }
 
+.link{
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
 .name {
   font-family: "Lora", serif;
-  margin-bottom: 8px;
 }
 
 .price {
@@ -39,7 +43,7 @@
   background-position: center;
   width: 40px;
   height: 40px;
-  transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, background-image 0.1s;
   &:hover {
     background-color: #ebebeb;
   }
