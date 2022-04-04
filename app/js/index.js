@@ -7,7 +7,7 @@ import App from './App'
 import "../scss/style.scss"
 
 ReactDOM.render(
-  <Router>
+  <Router basename={process.env.NODE_ENV === 'production' ? '/react-watches' : ''}>
     <App />
   </Router>,
   document.getElementById('root')

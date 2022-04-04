@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel app/*.html --open --port 3000",
-    "build": "parcel build app/*.html"
+    "build": "parcel build app/*.html --no-source-maps --public-url ./"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +16,9 @@
     "@parcel/transformer-sass": "^2.4.0",
     "@parcel/transformer-webmanifest": "^2.4.0",
     "axios": "^0.26.1",
+    "cssnano": "^5.1.7",
     "parcel": "^2.4.0",
+    "postcss": "^8.4.12",
     "process": "^0.11.10",
     "react": "^17.0.2",
     "react-content-loader": "^6.2.0",

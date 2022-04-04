@@ -13,14 +13,14 @@ const Minicart = ({ opened, items, close }) => {
   };
 
   return (
-    <div className={`${styles.minicart} ${opened ? styles.visible : ""}`}>
+    <div className={styles.minicart}>
       <ul className={styles.products}>
         {items.map((item) => {
           return (
             <li className={styles.item} key={item.productId}>
               <img className={styles.img} src={item.imgUrl} alt="Фото товара" />
               <a href="#">
-                <div className={styles.name}>{item.name}</div>
+                <div>{item.name}</div>
               </a>
               <div className={styles.price}>{item.price} руб.</div>
               <button className={styles.remove} onClick={() => onCross(item)}>

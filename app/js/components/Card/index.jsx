@@ -47,7 +47,7 @@ const Card = ({
             </a>
             <div className={styles.bottom}>
               <span className={styles.price}>{price} руб.</span>
-              <div className={styles.buttons}>
+              <div>
                 <button
                   className={`${styles.wish} ${styles.cardBtn} ${
                     isItemInWish(productId) ? styles.wishAdded : ""

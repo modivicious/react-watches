@@ -5,6 +5,7 @@
 *.sublime*
 npm-debug.*
 
+.cache
 .parcel-cache
 dist/
 node_modules/
