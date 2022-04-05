@@ -35,9 +35,12 @@ const Minicart = ({ opened, items, close }) => {
         <span>{items.reduce((sum, item) => sum + item.price, 0)} руб.</span>
       </div>
       <div className={styles.checkout}>
-        <a className="linkBtn" href="#">
+        <button
+          className="linkBtn"
+          onClick={() => alert("Заказ оформлен. Хорошего дня!")}
+        >
           Оформить заказ
-        </a>
+        </button>
       </div>
     </div>
   );
