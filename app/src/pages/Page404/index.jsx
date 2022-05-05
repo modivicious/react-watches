@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import DefaultButton from "../../components/DefaultButton";
 
 import * as styles from "./Page404.module.scss";
 
@@ -12,9 +13,7 @@ const Page404 = () => {
         Страница, которую вы желали посетить, могла быть удалена, ее имя
         изменилось или она временно недоступна.
       </p>
-      <Link className="linkBtn" to="/">
-        На главную
-      </Link>
+      <DefaultButton to="/">На главную</DefaultButton>
     </div>
   );
 };

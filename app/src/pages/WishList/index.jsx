@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 import Card from "../../components/Card";
 import Title from "../../components/Title";
+import DefaultButton from "../../components/DefaultButton";
 import { AppContext } from "../../context";
 
 import * as styles from "./WishList.module.scss";
@@ -40,9 +40,7 @@ const WishList = ({ items, onAddToCart, onAddToWish }) => {
                 <span className={styles.icon}></span>
                 <h2 className={styles.title}>Ваш список желаемого пуст.</h2>
                 <p>Но мы надеемся, что вы найдете себе что-то по душе.</p>
-                <Link className="linkBtn" to="/">
-                  В каталог
-                </Link>
+                <DefaultButton to="/">В каталог</DefaultButton>
               </div>
             ))}
         </>

@@ -49,11 +49,7 @@ const Header = ({ cartItems }) => {
                 classNames="fade-in"
                 unmountOnExit
               >
-                <Minicart
-                  opened={isCartOpen}
-                  items={cartItems}
-                  close={onCartClick}
-                />
+                <Minicart items={cartItems} close={onCartClick} />
               </CSSTransition>
             </li>
             <li className={styles.rightItem}>

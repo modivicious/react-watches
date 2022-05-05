@@ -59,6 +59,7 @@ const App = () => {
 
   const onAddToWish = async (obj) => {
     try {
+      console.log(obj);
       const foundItem = findItem(wishItems, obj);
       if (foundItem) {
         await onRemoveFromWish(foundItem);
