@@ -3,6 +3,7 @@ import ContentLoader from "react-content-loader";
 
 import Card from "../components/Card";
 import SortSelect from "../components/SortSelect";
+import Title from "../components/Title";
 import { AppContext } from "../context";
 
 const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
@@ -18,7 +19,7 @@ const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
   return (
     <div className="container">
       <div className="wrapper">
-        <h1 className="title mainTitle">Все часы</h1>
+        <Title text="Все часы" />
         <div className="info">
           <span className="quantity">
             {isLoaded ? (

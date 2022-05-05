@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 import Card from "../components/Card";
+import Title from "../components/Title";
 import { AppContext } from "../context";
 
 import * as styles from "./WishList.module.scss";
@@ -13,8 +14,7 @@ const WishList = ({ items, onAddToCart, onAddToWish }) => {
   return (
     <div className="container">
       <div className="wrapper">
-        <h1 className="title mainTitle">Список желаемого</h1>
-
+        <Title text="Список желаемого" />
         <CSSTransition
           in={isLoaded}
           timeout={500}
