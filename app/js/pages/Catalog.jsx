@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import ContentLoader from "react-content-loader";
 
 import Card from "../components/Card";
+import SortSelect from "../components/SortSelect";
 import { AppContext } from "../context";
 
 const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
@@ -34,14 +35,7 @@ const Catalog = ({ items, onAddToCart, onAddToWish, sort }) => {
               </ContentLoader>
             )}
           </span>
-          <select className="select" onChange={handleChangeOption}>
-            <option style={{ display: "none" }} value>
-              Сортировать по:
-            </option>
-            <option value="price-asc">Цена по возрастанию</option>
-            <option value="price-desc">Цена по убыванию</option>
-            <option value="latest">Последние поступления</option>
-          </select>
+          <SortSelect onChange={handleChangeOption} />
         </div>
         <ul className="products">
           {(isLoaded ? items : [...Array(8)]).map((item, index) => {
