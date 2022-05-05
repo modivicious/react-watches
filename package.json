@@ -16,6 +16,7 @@
     "@parcel/transformer-sass": "^2.4.1",
     "@parcel/transformer-webmanifest": "^2.4.1",
     "axios": "^0.26.1",
+    "classnames": "^2.3.1",
     "cssnano": "^5.1.7",
     "parcel": "^2.4.1",
     "postcss": "^8.4.12",

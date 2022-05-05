@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import cx from "classnames";
 
 import Minicart from "../Minicart";
 import useClickOutside from "../../hooks/useClickOutside";
@@ -29,13 +30,13 @@ const Header = ({ cartItems }) => {
           </Link>
           <ul className={styles.right}>
             <li className={styles.rightItem}>
-              <Link className={`${styles.icon} ${styles.wish}`} to="wishlist">
+              <Link className={cx(styles.icon, styles.wish)} to="wishlist">
                 <span className="visuallyHidden">Избранное</span>
               </Link>
             </li>
             <li className={styles.rightItem} ref={clickOutsideCart}>
               <button
-                className={`${styles.icon} ${styles.cart}`}
+                className={cx(styles.icon, styles.cart)}
                 type="button"
                 data-qty={cartItems.length}
                 onClick={onCartClick}
@@ -56,7 +57,7 @@ const Header = ({ cartItems }) => {
               </CSSTransition>
             </li>
             <li className={styles.rightItem}>
-              <a className={`${styles.icon} ${styles.user}`} href="#">
+              <a className={cx(styles.icon, styles.user)} href="#">
                 <span className="visuallyHidden">Личный кабинет</span>
               </a>
             </li>
