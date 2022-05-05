@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 
+import DefaultButton from "../DefaultButton";
 import { AppContext } from "../../context";
 
 import * as styles from "./Minicart.module.scss";
 
-const Minicart = ({ opened, items, close }) => {
+const Minicart = ({ items, close }) => {
   const { onRemoveFromCart } = useContext(AppContext);
 
   const onCross = (item) => {
@@ -35,12 +36,9 @@ const Minicart = ({ opened, items, close }) => {
         <span>{items.reduce((sum, item) => sum + item.price, 0)} руб.</span>
       </div>
       <div className={styles.checkout}>
-        <button
-          className="linkBtn"
-          onClick={() => alert("Заказ оформлен. Хорошего дня!")}
-        >
+        <DefaultButton onClick={() => alert("Заказ оформлен. Хорошего дня!")}>
           Оформить заказ
-        </button>
+        </DefaultButton>
       </div>
     </div>
   );

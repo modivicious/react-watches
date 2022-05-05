@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Catalog from "./pages/Catalog";
 import WishList from "./pages/WishList";
+import Page404 from "./pages/Page404";
 import { AppContext } from "./context";
 
 import { API_URL } from "./apiUrl";
@@ -58,6 +59,7 @@ const App = () => {
 
   const onAddToWish = async (obj) => {
     try {
+      console.log(obj);
       const foundItem = findItem(wishItems, obj);
       if (foundItem) {
         await onRemoveFromWish(foundItem);
@@ -125,29 +127,34 @@ const App = () => {
       value={{ onRemoveFromCart, isItemInCart, isItemInWish, isLoaded }}
     >
       <Header cartItems={cartItems} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Catalog
-              items={allItems}
-              onAddToCart={onAddToCart}
-              onAddToWish={onAddToWish}
-              sort={sortAllItems}
+      <div className="container">
+        <div className="wrapper">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Catalog
+                  items={allItems}
+                  onAddToCart={onAddToCart}
+                  onAddToWish={onAddToWish}
+                  sort={sortAllItems}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="wishlist"
-          element={
-            <WishList
-              items={wishItems}
-              onAddToCart={onAddToCart}
-              onAddToWish={onAddToWish}
+            <Route
+              path="wishlist"
+              element={
+                <WishList
+                  items={wishItems}
+                  onAddToCart={onAddToCart}
+                  onAddToWish={onAddToWish}
+                />
+              }
             />
-          }
-        />
-      </Routes>
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </div>
+      </div>
     </AppContext.Provider>
   );
 };

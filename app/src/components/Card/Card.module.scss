@@ -1,0 +1,33 @@
+.card {
+  width: 288px;
+  height: 383px;
+  border: 1px solid #dfdfdf;
+}
+
+.imageLink {
+  display: block;
+}
+
+.descr {
+  padding: 16px 8px 8px 8px;
+}
+
+.link {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-family: "Lora", serif;
+}
+
+.price {
+  font-size: 14px;
+  color: #444444;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

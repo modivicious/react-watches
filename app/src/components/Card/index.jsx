@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
 
+import IconButton from "../IconButton";
+import Image from "../Image";
 import { AppContext } from "../../context";
 
 import * as styles from "./Card.module.scss";
@@ -39,7 +41,7 @@ const Card = ({
       {isLoaded ? (
         <>
           <a className={styles.imageLink} href="#">
-            <img className={styles.image} src={imgUrl} alt="Фото продукта" />
+            <Image src={imgUrl} alt="Фото продукта" width={286} height={286} />
           </a>
           <div className={styles.descr}>
             <a className={styles.link} href="#">
@@ -48,24 +50,18 @@ const Card = ({
             <div className={styles.bottom}>
               <span className={styles.price}>{price} руб.</span>
               <div>
-                <button
-                  className={`${styles.wish} ${styles.cardBtn} ${
-                    isItemInWish(productId) ? styles.wishAdded : ""
-                  }`}
+                <IconButton
+                  icon="wish"
                   onClick={onWish}
-                  type="button"
-                >
-                  <span className="visuallyHidden">Добавить в желаемое</span>
-                </button>
-                <button
-                  className={`${styles.cart} ${styles.cardBtn} ${
-                    isItemInCart(productId) ? styles.cartAdded : ""
-                  }`}
+                  isActive={isItemInWish(productId)}
+                  ariaLabel="Добавить в желаемое"
+                />
+                <IconButton
+                  icon="cart"
                   onClick={onCart}
-                  type="button"
-                >
-                  <span className="visuallyHidden">Добавить в корзину</span>
-                </button>
+                  isActive={isItemInCart(productId)}
+                  ariaLabel="Добавить в корзину"
+                />
               </div>
             </div>
           </div>
