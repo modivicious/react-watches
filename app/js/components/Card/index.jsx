@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import ContentLoader from "react-content-loader";
 
 import IconButton from "../IconButton";
+import Image from "../Image";
 import { AppContext } from "../../context";
 
 import * as styles from "./Card.module.scss";
@@ -40,7 +41,7 @@ const Card = ({
       {isLoaded ? (
         <>
           <a className={styles.imageLink} href="#">
-            <img className={styles.image} src={imgUrl} alt="Фото продукта" />
+            <Image src={imgUrl} alt="Фото продукта" width={286} height={286} />
           </a>
           <div className={styles.descr}>
             <a className={styles.link} href="#">
