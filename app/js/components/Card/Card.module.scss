@@ -17,7 +17,7 @@
   padding: 16px 8px 8px 8px;
 }
 
-.link{
+.link {
   display: inline-block;
   margin-bottom: 8px;
 }
@@ -35,32 +35,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.cardBtn {
-  background-repeat: no-repeat;
-  background-size: 20px;
-  background-position: center;
-  width: 40px;
-  height: 40px;
-  transition: background-color 0.15s ease-in-out, background-image 0.1s;
-  &:hover {
-    background-color: #ebebeb;
-  }
-}
-
-.wish {
-  background-image: url("../../../images/icons/heart.svg");
-}
-
-.cart {
-  background-image: url("../../../images/icons/cart-plus.svg");
-}
-
-.cartAdded {
-  background-image: url("../../../images/icons/cart-filled.svg");
-}
-
-.wishAdded {
-  background-image: url("../../../images/icons/heart-filled.svg");
 }
