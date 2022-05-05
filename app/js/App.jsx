@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "./components/Header";
 import Catalog from "./pages/Catalog";
 import WishList from "./pages/WishList";
+import Page404 from "./pages/Page404";
 import { AppContext } from "./context";
 
 import { API_URL } from "./apiUrl";
@@ -147,6 +148,7 @@ const App = () => {
             />
           }
         />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </AppContext.Provider>
   );
