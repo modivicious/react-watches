@@ -36,6 +36,14 @@
   }
 }
 
+.pageContentWrapper {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  gap: 25px;
+  margin-top: 70px;
+}
+
 .fade-in-enter {
   opacity: 0;
 }

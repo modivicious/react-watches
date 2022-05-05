@@ -126,30 +126,34 @@ const App = () => {
       value={{ onRemoveFromCart, isItemInCart, isItemInWish, isLoaded }}
     >
       <Header cartItems={cartItems} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Catalog
-              items={allItems}
-              onAddToCart={onAddToCart}
-              onAddToWish={onAddToWish}
-              sort={sortAllItems}
+      <div className="container">
+        <div className="wrapper">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Catalog
+                  items={allItems}
+                  onAddToCart={onAddToCart}
+                  onAddToWish={onAddToWish}
+                  sort={sortAllItems}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="wishlist"
-          element={
-            <WishList
-              items={wishItems}
-              onAddToCart={onAddToCart}
-              onAddToWish={onAddToWish}
+            <Route
+              path="wishlist"
+              element={
+                <WishList
+                  items={wishItems}
+                  onAddToCart={onAddToCart}
+                  onAddToWish={onAddToWish}
+                />
+              }
             />
-          }
-        />
-        <Route path="*" element={<Page404 />} />
-      </Routes>
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </div>
+      </div>
     </AppContext.Provider>
   );
 };
