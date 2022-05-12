@@ -10,4 +10,4 @@ npm-debug.*
 dist/
 node_modules/
 package-lock.json
-app/js/apiUrl.js
+app/src/apiUrl.js
